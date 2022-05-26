@@ -6,7 +6,7 @@ titulo.id = 'title';
 titulo.innerText = 'Paleta de Cores';
 body.appendChild(titulo);
 
-// REQUISITO 2 E 3 (PALETA DE CORES)
+// REQUISITO 2, 3 E 6 (PALETA DE CORES)
 const paletaDeCores = document.createElement('section');
 paletaDeCores.id = 'color-palette';
 body.appendChild(paletaDeCores);
@@ -45,8 +45,3 @@ function criarPixel(n) {
   }
 }
 criarPixel(25);
-
-// REQUISITO 6 (COR INICIAL PRETA)
-
-
-
