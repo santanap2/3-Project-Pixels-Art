@@ -47,16 +47,17 @@ const quadro = document.createElement('section');
 quadro.id = 'pixel-board';
 body.appendChild(quadro);
 
-function criarPixel(n) {
-  for (let i = 0; i < n; i += 1) {
+function criarPixel(w, h) {
+  for (let i = 0; i < (w * h); i += 1) {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
+    pixel.id = i;
     quadro.appendChild(pixel);
   }
 }
-criarPixel(25);
+criarPixel(5, 5);
 
-// REQUISITO 7
+// REQUISITO 7 (ADICIONAR CLASSE SELECTED)
 const preto = document.getElementById('black');
 const azul = document.getElementById('blue');
 const laranja = document.getElementById('orange');
@@ -101,3 +102,32 @@ preto.addEventListener('click', adicionaClasseP);
 azul.addEventListener('click', adicionaClasseA);
 laranja.addEventListener('click', adicionaClasseL);
 roxo.addEventListener('click', adicionaClasseR);
+
+// REQUISITO 8 (PINTAR PIXELS) [INCOMPLETO]
+
+function paint() {
+  for (let n = 0; n < 25; n += 1) {
+    const pixel = document.querySelectorAll('#pixel-board div')[n];
+    const selected = document.querySelector('.selected');
+    pixel.style.backgroundColor = selected.style.backgroundColor;
+  }
+}
+
+for (let i = 0; i < 25; i += 1) {
+  const pixel = document.querySelectorAll('#pixel-board div')[i];
+  pixel.addEventListener('click', paint);
+}
+
+// REQUISITO 9 (BOTÃO LIMPAR CORES) [INCOMPLETO]
+const button = document.createElement('button');
+button.id = 'clear-board';
+button.innerText = 'Limpar';
+paletaDeCores.appendChild(button);
+
+function reset() {
+  for (let n = 0; n < 25; n += 1) {
+    const pixels = document.querySelectorAll('#pixel-board div')[n];
+    pixels.style.backgroundColor = 'white';
+  }
+}
+button.addEventListener('click', reset);
