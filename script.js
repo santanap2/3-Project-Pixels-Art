@@ -61,7 +61,6 @@ const preto = document.getElementById('black');
 const azul = document.getElementById('blue');
 const laranja = document.getElementById('orange');
 const roxo = document.getElementById('purple');
-const cores = document.querySelectorAll('color');
 
 function removeClasses() {
   if (preto.classList.contains('selected')) {
@@ -78,12 +77,27 @@ function removeClasses() {
   }
 }
 
-function adicionaClasse() {
+function adicionaClasseP() {
   removeClasses();
-  cores.classList.add('selected');
+  preto.classList.add('selected');
 }
 
-preto.addEventListener('click', adicionaClasse);
-azul.addEventListener('click', adicionaClasse);
-laranja.addEventListener('click', adicionaClasse);
-roxo.addEventListener('click', adicionaClasse);
+function adicionaClasseA() {
+  removeClasses();
+  azul.classList.add('selected');
+}
+
+function adicionaClasseL() {
+  removeClasses();
+  laranja.classList.add('selected');
+}
+
+function adicionaClasseR() {
+  removeClasses();
+  roxo.classList.add('selected');
+}
+
+preto.addEventListener('click', adicionaClasseP);
+azul.addEventListener('click', adicionaClasseA);
+laranja.addEventListener('click', adicionaClasseL);
+roxo.addEventListener('click', adicionaClasseR);
