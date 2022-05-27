@@ -1,15 +1,14 @@
     body {
-        background-image: url(wallpaper.jpg);
+        /* background-image: url(wallpaper.jpg); */
         background-color: rgb(180, 200, 255);
     }
 
     #title {
         margin-bottom: 80px;
-        color: white;
     }
+
     .color {
         border: 1px solid black;
-        border: 1px solid white;
         display: inline-block;
         width: 80px;
         height: 80px;
@@ -20,7 +19,7 @@
         width: 213px;
         height: 213px;
         padding: 1px;
-        margin-top: 50px;
+        margin: 20px 0 0 10px;
         border: 1px black solid;
         background-color: black;
 
@@ -37,6 +36,9 @@
     }
 
     #clear-board {
-        margin: 30px 0 30px 0;
-        display: block;
+        margin: 30px 0 0px 0;
+    }
+
+    #sec-button {
+        margin-left: 10px;
     }
