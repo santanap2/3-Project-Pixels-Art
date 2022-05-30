@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable prefer-destructuring */
 // function bemVindo() {
@@ -59,7 +60,7 @@ button.innerText = 'Limpar';
 newSection.appendChild(button);
 
 function reset() {
-  for (let n = 0; n < 25; n += 1) {
+  for (let n = 0; n < pixels.length; n += 1) {
     const pixels = document.querySelectorAll('#pixel-board div')[n];
     pixels.style.backgroundColor = 'white';
   }
@@ -67,18 +68,27 @@ function reset() {
 button.addEventListener('click', reset);
 
 // REQUISITO 10 [INCOMPLETO]
-const buttonInput = document.createElement('button');
-buttonInput.id = 'generate-board';
-buttonInput.innerText = 'Mudar tamanho!';
-newSection.appendChild(buttonInput);
+const input = document.createElement('input');
+input.id = 'board-size';
+input.type = 'number';
+input.placeholder = 'Tamanho do lado';
+input.min = '1';
+input.max = '20';
+newSection.appendChild(input);
+
+const buttonVQV = document.createElement('button');
+buttonVQV.id = 'generate-board';
+buttonVQV.innerText = 'VQV';
+// buttonVQV.addEventListener('click', );
+newSection.appendChild(buttonVQV);
 
 // REQUISITO 4 E 5(QUADRO 5X5)
 const quadro = document.createElement('section');
 quadro.id = 'pixel-board';
 body.appendChild(quadro);
 
-function criarPixel(w, h) {
-  for (let i = 0; i < (w * h); i += 1) {
+function criarLinhaPixel(n) {
+  for (let i = 0; i < n * n; i += 1) {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
     pixel.id = i;
@@ -86,7 +96,13 @@ function criarPixel(w, h) {
   }
 }
 
-criarPixel(5, 5);
+function tamanhoDoQuadro(n) {
+  quadro.style.width = `${42.6 * n}px`;
+  quadro.style.heigth = `${42.6 * n}px`;
+  criarLinhaPixel(n);
+}
+
+tamanhoDoQuadro(8);
 
 // REQUISITO 7 (ADICIONAR CLASSE SELECTED)
 const paleta1 = document.getElementById('paleta1');
@@ -156,3 +172,6 @@ const pixels = document.querySelectorAll('.pixel');
 pixels.forEach((item) => {
   item.addEventListener('click', pintarPixel);
 });
+
+// REQUISITO 12
+// const color1 = Math.floor(Math.random)
