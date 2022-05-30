@@ -15,6 +15,11 @@
         margin-left: 10px;
     }
 
+    /* .selected {
+        width: 100px;
+        height: 100px;
+    } */
+
     #pixel-board {
         width: 213px;
         height: 213px;
@@ -35,10 +40,16 @@
         float: left;
     }
 
-    #clear-board {
-        margin: 30px 0 0px 0;
-    }
-
     #sec-button {
         margin-left: 10px;
+    }
+    
+    #clear-board {
+        margin: 30px 0 30px 0;
+        display: inline-block;
+    }
+
+    #generate-board {
+        margin: 30px 0 30px 30px;
+        display: inline-block;
     }

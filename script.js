@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable prefer-destructuring */
 // function bemVindo() {
 //   alert('Bem vindo ao Projeto Pixels Art! Divirta-se!!!');
@@ -41,6 +42,12 @@ cor4.id = 'paleta4';
 cor4.style.backgroundColor = 'rgb(131, 82, 160)';
 paletaDeCores.appendChild(cor4);
 
+// const borracha = document.createElement('div');
+// borracha.className = 'color';
+// borracha.id = 'borracha';
+// borracha.style.backgroundColor = 'rgb(254, 255, 255)';
+// paletaDeCores.appendChild(borracha);
+
 // REQUISITO 9 (BOTÃO LIMPAR CORES)
 const newSection = document.createElement('section');
 newSection.id = 'sec-button';
@@ -58,6 +65,12 @@ function reset() {
   }
 }
 button.addEventListener('click', reset);
+
+// REQUISITO 10 [INCOMPLETO]
+const buttonInput = document.createElement('button');
+buttonInput.id = 'generate-board';
+buttonInput.innerText = 'Mudar tamanho!';
+newSection.appendChild(buttonInput);
 
 // REQUISITO 4 E 5(QUADRO 5X5)
 const quadro = document.createElement('section');
@@ -80,7 +93,9 @@ const paleta1 = document.getElementById('paleta1');
 const paleta2 = document.getElementById('paleta2');
 const paleta3 = document.getElementById('paleta3');
 const paleta4 = document.getElementById('paleta4');
+// const eraser = document.getElementById('borracha');
 
+// eslint-disable-next-line complexity
 function removeClasses() {
   if (paleta1.classList.contains('selected')) {
     paleta1.classList.remove('selected');
@@ -94,6 +109,9 @@ function removeClasses() {
   if (paleta4.classList.contains('selected')) {
     paleta4.classList.remove('selected');
   }
+  // if (eraser.classList.contains('selected')) {
+  //   eraser.classList.remove('selected');
+  // }
 }
 
 function adicionaClasse1() {
@@ -116,21 +134,25 @@ function adicionaClasse4() {
   paleta4.classList.add('selected');
 }
 
+// function adicionaClasse5() {
+//   removeClasses();
+//   eraser.classList.add('selected');
+// }
+
 paleta1.addEventListener('click', adicionaClasse1);
 paleta2.addEventListener('click', adicionaClasse2);
 paleta3.addEventListener('click', adicionaClasse3);
 paleta4.addEventListener('click', adicionaClasse4);
+// eraser.addEventListener('click', adicionaClasse5);
 
-// REQUISITO 8 (PINTAR PIXELS) [INCOMPLETO]
-function paint() {
-  for (let n = 0; n < 25; n += 1) {
-    const pixel = document.querySelectorAll('#pixel-board div')[n];
-    const selected = document.querySelector('.selected');
-    pixel.style.backgroundColor = selected.style.backgroundColor;
-  }
+// REQUISITO 8 (PINTAR PIXELS)
+function pintarPixel(eventoDeOrigem) {
+  const pixel = eventoDeOrigem.target;
+  const selectedColor = document.querySelector('.selected').style.backgroundColor;
+  pixel.style.backgroundColor = selectedColor;
 }
 
-for (let i = 0; i < 25; i += 1) {
-  const pixel = document.querySelectorAll('#pixel-board div')[i];
-  pixel.addEventListener('click', paint);
-}
+const pixels = document.querySelectorAll('.pixel');
+pixels.forEach((item) => {
+  item.addEventListener('click', pintarPixel);
+});
