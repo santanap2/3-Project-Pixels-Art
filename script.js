@@ -45,7 +45,7 @@ cleanButton.innerText = 'Limpar';
 newSection.appendChild(cleanButton);
 
 function resetColors() {
-  for (let n = 0; n < pixels.length; n += 1) {
+  for (let n = 0; n < quadro.children.length; n += 1) {
     const pixels = document.querySelectorAll('#pixel-board div')[n];
     pixels.style.backgroundColor = 'white';
   }
@@ -66,6 +66,11 @@ function criarQuadroPixels(n) {
   }
   quadro.style.gridTemplateColumns = `repeat(${n}, 40px)`;
   quadro.style.gridTemplateRows = `repeat(${n}, 40px)`;
+
+  const pixels = document.querySelectorAll('.pixel');
+  pixels.forEach((item) => {
+    item.addEventListener('click', pintarPixel);
+  });
 }
 
 criarQuadroPixels(5);
@@ -127,9 +132,10 @@ function pintarPixel(eventoDeOrigem) {
   pixel.style.backgroundColor = selectedColor;
 }
 
-// pixels.forEach((item) => {
-//   item.addEventListener('click', pintarPixel);
-// });
+const pixels = document.querySelectorAll('.pixel');
+pixels.forEach((item) => {
+  item.addEventListener('click', pintarPixel);
+});
 
 // REQUISITO 10 [INCOMPLETO]
 const input = document.createElement('input');
@@ -146,15 +152,21 @@ buttonVQV.innerText = 'VQV';
 newSection.appendChild(buttonVQV);
 
 function botaoVQV() {
+  if (input.value < 1 || input.value === undefined) {
+    alert('Board Inválido!');
+    criarQuadroPixels(5);
+  }
+  if (input.value < 5) {
+    input.value = 5;
+  }
+  if (input.value > 50) {
+    input.value = 50;
+  }
   quadro.innerHTML = '';
   criarQuadroPixels(input.value);
 }
 
 buttonVQV.addEventListener('click', botaoVQV);
-const pixels = document.querySelectorAll('.pixel');
-quadro.addEventListener('click', (evento) => {
-  pintarPixel(evento);
-});
 
 // REQUISITO 12 (CORES ALEATÓRIAS)
 function numeroAleatorio() {
