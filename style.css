@@ -1,40 +1,45 @@
     body {
-        /* background-image: url(wallpaper.jpg); */
-        background-color: rgb(180, 200, 255);
+        background-image: url(fundo.jpg);
+        font-family: sans-serif;
+        text-align: center;
+        margin: 0;
     }
 
     #title {
         margin-bottom: 80px;
+        color: white;
+        font-size: 50px;
     }
 
     .color {
-        border: 1px solid black;
+        border: 1px solid white;
         display: inline-block;
         width: 80px;
         height: 80px;
         margin-left: 10px;
     }
 
-    /* .selected {
+     .selected {
         width: 100px;
         height: 100px;
-    } */
+    }
 
     #pixel-board {
-        padding: 1px;
-        margin: 0px 0 0 10px;
-        display:grid;
+        margin: auto;
+        display: grid;
         width:fit-content;
         height: fit-content;
+        text-align: center;
+        border: 5px solid black;
+
     }
 
     .pixel {
         width: 40px;
         height: 40px;
-        margin: 0px;
-        padding: 0px;
         background-color: white;
-        border: 1px solid black;        
+        border: 1px solid black;     
+        margin: auto;   
     }
 
     #sec-button {
@@ -58,4 +63,22 @@
         margin: 30px 0 0 5px;
         display: inline-block;
         padding: 10px;
+    }
+
+    #rodape {
+        background-color: rgba(52, 23, 105, 0.500);
+        margin: 50px 0 0 0;
+        padding: 20px 0 20px 0;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        position:fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .logos {
+        width: 50px;
+        margin-top: 10px;
     }
